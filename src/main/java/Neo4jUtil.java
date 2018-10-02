@@ -39,7 +39,7 @@ public class Neo4jUtil implements AutoCloseable{
 
     public static void main(String[] args) throws IOException {
         Neo4jUtil neo4jUtil = new Neo4jUtil("bolt://localhost:7687", "neo4j", "neo4jj" );
-        /*FoodDes.getAllFoodDesList().forEach(foodDes -> {
+        FoodDes.getAllFoodDesList().forEach(foodDes -> {
             neo4jUtil.myNeo4j(
                     "CREATE (n:FoodDes { ndbNo: \'" + foodDes.getNdbNo() + "\', "
                             + "fdGrpCd: \'" + foodDes.getFdGrpCd() + "\', "
@@ -56,11 +56,11 @@ public class Neo4jUtil implements AutoCloseable{
                             + "fatFactor: \'" + foodDes.getFatFactor() + "\', "
                             + "choFactor: \'" + foodDes.getChoFactor() + "\' })");
             System.out.println(foodDes);
-        });*/
+        });
 
         /*DataSrc.getAllDataSrcList().forEach(dataSrc -> {
             neo4jUtil.myNeo4j(
-                    "CREATE (n:FoodDes { dataSrcId: \'" + dataSrc.getDataSrcId() + "\', "
+                    "CREATE (n:DataSrc { dataSrcId: \'" + dataSrc.getDataSrcId() + "\', "
                             + "authors: \'" + dataSrc.getAuthors() + "\', "
                             + "title: \'" + dataSrc.getTitle() + "\', "
                             + "year: \'" + dataSrc.getYear() + "\', "
