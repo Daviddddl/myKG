@@ -135,7 +135,7 @@ public class FoodDes {
         this.choFactor = choFactor;
     }
 
-    private FoodDes(String ndbNo, String fdGrpCd, String longDesc, String shrtDesc, String comName, String manufacName, String survey, String refDesc, String refuse, String sciName, String nFactor, String proFactor, String fatFactor, String choFactor) {
+    public FoodDes(String ndbNo, String fdGrpCd, String longDesc, String shrtDesc, String comName, String manufacName, String survey, String refDesc, String refuse, String sciName, String nFactor, String proFactor, String fatFactor, String choFactor) {
         this.ndbNo = ndbNo;
         this.fdGrpCd = fdGrpCd;
         this.longDesc = longDesc;
