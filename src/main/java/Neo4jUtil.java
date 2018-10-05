@@ -169,6 +169,8 @@ public class Neo4jUtil implements AutoCloseable{
             System.out.println(weight);
         });*/
 
+
+
 //        MATCH (a:Person),(b:Person) WHERE a.name = 'A' AND b.name = 'B' CREATE (a)-[r:RELTYPE]->(b) RETURN type(r)
 
         neo4jUtil.close();
