@@ -1,14 +1,18 @@
 package operation;
 
 import dataobject.*;
+import utils.Neo4jConfig;
 import utils.Neo4jUtil;
 
 import java.io.IOException;
 
 public class CreateNodes {
 
-    public static void creaateFoodDes() throws IOException {
-        Neo4jUtil neo4jUtil = new Neo4jUtil("bolt://localhost:7687", "neo4j", "neo4jj" );
+    private Neo4jUtil neo4jUtil = new Neo4jConfig().getNeo4j();
+
+    public CreateNodes() throws IOException {}
+
+    public void creaateFoodDes() throws IOException {
 
         FoodDes.getAllFoodDesList().forEach(foodDes -> {
             neo4jUtil.myNeo4j(
@@ -32,9 +36,7 @@ public class CreateNodes {
         neo4jUtil.close();
     }
 
-    public static void createDataSrc() throws IOException {
-
-        Neo4jUtil neo4jUtil = new Neo4jUtil("bolt://localhost:7687", "neo4j", "neo4jj" );
+    public void createDataSrc() throws IOException {
 
         DataSrc.getAllDataSrcList().forEach(dataSrc -> {
             neo4jUtil.myNeo4j(
@@ -49,11 +51,11 @@ public class CreateNodes {
                             + "endPage: \'" + dataSrc.getEndPage().trim() + "\' })");
             System.out.println(dataSrc);
         });
+
+        neo4jUtil.close();
     }
 
-    public static void createDarsrcln() throws IOException {
-
-        Neo4jUtil neo4jUtil = new Neo4jUtil("bolt://localhost:7687", "neo4j", "neo4jj" );
+    public void createDarsrcln() throws IOException {
 
         Datsrcln.getAllDatsrclnList().forEach(datsrcln -> {
             neo4jUtil.myNeo4j(
@@ -63,11 +65,10 @@ public class CreateNodes {
             System.out.println(datsrcln);
         });
 
+        neo4jUtil.close();
     }
 
-    public static void createDerivCd() throws IOException {
-
-        Neo4jUtil neo4jUtil = new Neo4jUtil("bolt://localhost:7687", "neo4j", "neo4jj" );
+    public void createDerivCd() throws IOException {
 
         DerivCd.getAllDerivCdList().forEach(derivCd -> {
             neo4jUtil.myNeo4j(
@@ -75,11 +76,11 @@ public class CreateNodes {
                             + "derivDesc: \'" + derivCd.getDerivDesc().trim()+ "\' })");
             System.out.println(derivCd);
         });
+
+        neo4jUtil.close();
     }
 
-    public static void createFdGroup() throws IOException {
-
-        Neo4jUtil neo4jUtil = new Neo4jUtil("bolt://localhost:7687", "neo4j", "neo4jj" );
+    public void createFdGroup() throws IOException {
 
         FdGroup.getAllFdGroupList().forEach(fdGroup -> {
             neo4jUtil.myNeo4j(
@@ -87,11 +88,11 @@ public class CreateNodes {
                             + "fdGrpDesc: \'" + fdGroup.getFdGrpDesc().trim() + "\' })");
             System.out.println(fdGroup);
         });
+
+        neo4jUtil.close();
     }
 
-    public static void createFootnote() throws IOException {
-
-        Neo4jUtil neo4jUtil = new Neo4jUtil("bolt://localhost:7687", "neo4j", "neo4jj" );
+    public void createFootnote() throws IOException {
 
         Footnote.getAllFootnoteList().forEach(footnote -> {
             neo4jUtil.myNeo4j(
@@ -102,11 +103,11 @@ public class CreateNodes {
                             + "nutrNo: \'" + footnote.getNutrNo().trim() + "\' })");
             System.out.println(footnote);
         });
+
+        neo4jUtil.close();
     }
 
-    public static void createLangdesc() throws IOException {
-
-        Neo4jUtil neo4jUtil = new Neo4jUtil("bolt://localhost:7687", "neo4j", "neo4jj" );
+    public void createLangdesc() throws IOException {
 
         Langdesc.getAllLangdescList().forEach(langdesc -> {
             neo4jUtil.myNeo4j(
@@ -114,11 +115,11 @@ public class CreateNodes {
                             + "factorCode: \'" + langdesc.getFactorCode().trim() + "\' })");
             System.out.println(langdesc);
         });
+
+        neo4jUtil.close();
     }
 
-    public static void createLangual() throws IOException {
-
-        Neo4jUtil neo4jUtil = new Neo4jUtil("bolt://localhost:7687", "neo4j", "neo4jj" );
+    public void createLangual() throws IOException {
 
         Langual.getAllLangualList().forEach(langual -> {
             neo4jUtil.myNeo4j(
@@ -126,11 +127,11 @@ public class CreateNodes {
                             + "ndbNo: \'" + langual.getNdbNo().trim() + "\' })");
             System.out.println(langual);
         });
+
+        neo4jUtil.close();
     }
 
-    public static void createNutData() throws IOException {
-
-        Neo4jUtil neo4jUtil = new Neo4jUtil("bolt://localhost:7687", "neo4j", "neo4jj" );
+    public void createNutData() throws IOException {
 
         NutData.getAllNutDataList().forEach(nutData -> {
             neo4jUtil.myNeo4j(
@@ -153,11 +154,11 @@ public class CreateNodes {
                             + "upEb: \'" + nutData.getUpEb().trim() + "\' })");
             System.out.println(nutData);
         });
+
+        neo4jUtil.close();
     }
 
-    public static void createNutrDef() throws IOException {
-
-        Neo4jUtil neo4jUtil = new Neo4jUtil("bolt://localhost:7687", "neo4j", "neo4jj" );
+    public void createNutrDef() throws IOException {
 
         NutrDef.getAllNutrDefList().forEach(nutrDef -> {
             neo4jUtil.myNeo4j(
@@ -169,11 +170,11 @@ public class CreateNodes {
                             + "units: \'" + nutrDef.getUnits().trim() + "\' })");
             System.out.println(nutrDef);
         });
+
+        neo4jUtil.close();
     }
 
-    public static void createSrcCd() throws IOException {
-
-        Neo4jUtil neo4jUtil = new Neo4jUtil("bolt://localhost:7687", "neo4j", "neo4jj" );
+    public void createSrcCd() throws IOException {
 
         SrcCd.getAllSrcCdList().forEach(srcCd -> {
             neo4jUtil.myNeo4j(
@@ -181,11 +182,11 @@ public class CreateNodes {
                             + "srcCdDesc: \'" + srcCd.getSrcCdDesc().trim() + "\' })");
             System.out.println(srcCd);
         });
+
+        neo4jUtil.close();
     }
 
-    public static void createWeight() throws IOException {
-
-        Neo4jUtil neo4jUtil = new Neo4jUtil("bolt://localhost:7687", "neo4j", "neo4jj" );
+    public void createWeight() throws IOException {
 
         Weight.getAllWeightList().forEach(weight -> {
             neo4jUtil.myNeo4j(
@@ -198,5 +199,7 @@ public class CreateNodes {
                             + "getStdDev: \'" + weight.getStdDev().trim() + "\' })");
             System.out.println(weight);
         });
+
+        neo4jUtil.close();
     }
 }

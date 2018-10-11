@@ -3,8 +3,11 @@ package utils;
 import org.neo4j.driver.v1.*;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Properties;
 
 public class Neo4jUtil implements AutoCloseable{
+
     private final Driver driver;
 
     public Neo4jUtil(String uri, String user, String password)
@@ -14,6 +17,13 @@ public class Neo4jUtil implements AutoCloseable{
 
     public Neo4jUtil(Driver driver) {
         this.driver = driver;
+    }
+
+    @Override
+    public String toString() {
+        return "Neo4jUtil{" +
+                "driver=" + driver +
+                '}';
     }
 
     @Override
