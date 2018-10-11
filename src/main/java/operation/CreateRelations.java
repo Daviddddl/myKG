@@ -1,20 +1,23 @@
 package operation;
 
 import dataobject.*;
+import utils.Neo4jConfig;
 import utils.Neo4jUtil;
 
 import java.io.IOException;
 
 public class CreateRelations {
 
+    private Neo4jUtil neo4jUtil = new Neo4jConfig().getNeo4j();
+
+    public CreateRelations() throws IOException {}
+
     // MATCH (a:Person),(b:Person) WHERE a.name = 'A' AND b.name = 'B' CREATE (a)-[r:RELTYPE]->(b) RETURN type(r)
 
-    public static void createFoodDes2FoodGroupDescription() throws IOException {
+    public void createFoodDes2FoodGroupDescription() throws IOException {
         /*
          * FoodDes -> FoodGroupDescription
          */
-
-        Neo4jUtil neo4jUtil = new Neo4jUtil("bolt://localhost:7687", "neo4j", "neo4jj" );
 
         FdGroup.getAllFdGroupList().forEach(fdGroup -> {
             String cmd = "MATCH (a:FoodDes),(b:FdGroup) WHERE a.fdGrpCd = '"
@@ -27,10 +30,12 @@ public class CreateRelations {
             neo4jUtil.myNeo4j(cmd);
             System.out.println(cmd);
         });
+
+        neo4jUtil.close();
     }
 
 
-    public static void createFoodDes2Footnote() throws IOException {
+    public void createFoodDes2Footnote() throws IOException {
         /*
          * FoodDes -> Footnote
          */
@@ -48,9 +53,11 @@ public class CreateRelations {
             neo4jUtil.myNeo4j(cmd);
             System.out.println(cmd);
         });
+
+        neo4jUtil.close();
     }
 
-    public static void createFoodDes2NutrientDateFile() throws IOException {
+    public void createFoodDes2NutrientDateFile() throws IOException {
         /*
          * FoodDes -> Nutrient Date File
          */
@@ -68,9 +75,11 @@ public class CreateRelations {
             neo4jUtil.myNeo4j(cmd);
             System.out.println(cmd);
         });
+
+        neo4jUtil.close();
     }
 
-    public static void createFootnote2NutrientDateFile() throws IOException {
+    public void createFootnote2NutrientDateFile() throws IOException {
         /*
          * Footnote -> Nutrient Date File
          */
@@ -88,9 +97,11 @@ public class CreateRelations {
             neo4jUtil.myNeo4j(cmd);
             System.out.println(cmd);
         });
+
+        neo4jUtil.close();
     }
 
-    public static void createFoodDes2Weight() throws IOException {
+    public void createFoodDes2Weight() throws IOException {
         /*
          * FoodDes -> Weight File
          */
@@ -109,9 +120,10 @@ public class CreateRelations {
             System.out.println(cmd);
         });
 
+        neo4jUtil.close();
     }
 
-    public static void createFoodDes22Langual() throws IOException {
+    public void createFoodDes22Langual() throws IOException {
         /*
          * FoodDes -> Langual
          */
@@ -129,9 +141,11 @@ public class CreateRelations {
             neo4jUtil.myNeo4j(cmd);
             System.out.println(cmd);
         });
+
+        neo4jUtil.close();
     }
 
-    public static void createLangual2LangualFactorsDescriptionFile() throws IOException {
+    public void createLangual2LangualFactorsDescriptionFile() throws IOException {
         /*
          * Langual -> Langual Factors Description File
          */
@@ -149,9 +163,11 @@ public class CreateRelations {
             neo4jUtil.myNeo4j(cmd);
             System.out.println(cmd);
         });
+
+        neo4jUtil.close();
     }
 
-    public static void createNutrientDataFile2NutrientDefinitionFile() throws IOException {
+    public void createNutrientDataFile2NutrientDefinitionFile() throws IOException {
         /*
          * Nutrient Data File -> Nutrient Definition File
          */
@@ -169,9 +185,11 @@ public class CreateRelations {
             neo4jUtil.myNeo4j(cmd);
             System.out.println(cmd);
         });
+
+        neo4jUtil.close();
     }
 
-    public static void createNutrientDataFile2SourceCodeFile() throws IOException {
+    public void createNutrientDataFile2SourceCodeFile() throws IOException {
         /*
          * Nutrient Data File -> Source Code File
          */
@@ -189,9 +207,11 @@ public class CreateRelations {
             neo4jUtil.myNeo4j(cmd);
             System.out.println(cmd);
         });
+
+        neo4jUtil.close();
     }
 
-    public static void createNutrientDataFile2DataDerivationCode() throws IOException {
+    public void createNutrientDataFile2DataDerivationCode() throws IOException {
         /*
          * Nutrient Data File -> Data Derivation Code
          */
@@ -209,9 +229,11 @@ public class CreateRelations {
             neo4jUtil.myNeo4j(cmd);
             System.out.println(cmd);
         });
+
+        neo4jUtil.close();
     }
 
-    public static void createNutrientDataFile2SourcesofDataLinkFile() throws IOException {
+    public void createNutrientDataFile2SourcesofDataLinkFile() throws IOException {
         /*
          * Nutrient Data File -> Sources of Data Link File
          */
@@ -229,9 +251,11 @@ public class CreateRelations {
             neo4jUtil.myNeo4j(cmd);
             System.out.println(cmd);
         });
+
+        neo4jUtil.close();
     }
 
-    public static void createSourcesofDataLinkFile2SourcesofDataFile() throws IOException {
+    public void createSourcesofDataLinkFile2SourcesofDataFile() throws IOException {
         /*
          * Sources of Data Link File -> Sources of Data File
          */
@@ -249,5 +273,7 @@ public class CreateRelations {
             neo4jUtil.myNeo4j(cmd);
             System.out.println(cmd);
         });
+
+        neo4jUtil.close();
     }
 }
