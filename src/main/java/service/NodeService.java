@@ -8,4 +8,5 @@ public interface NodeService {
 
     List<HashMap> getNodesByLabels(String label, Integer num, List<String> keys);
     List<Map> getRelationsByName(String relationName, Integer num);
+    HashMap<String, String> getNodeById(String nodeId, List<String> keys);
 }

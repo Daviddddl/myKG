@@ -60,4 +60,27 @@ public class NodeServiceImpl implements NodeService{
         neo4jUtil.close();
         return mapList;
     }
+
+    @Override
+    public HashMap<String, String> getNodeById(String nodeId, List<String> keys) {
+
+        StringBuilder stringBuilder = new StringBuilder("MATCH (n) WHERE ID(n) = " + nodeId + " RETURN ");
+        if (keys != null)
+            keys.forEach(s -> stringBuilder.append("n.").append(s).append(","));
+        else
+            stringBuilder.append("n,");
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+
+        System.out.println(stringBuilder.toString());
+        StatementResult result = neo4jUtil.myNeo4j(stringBuilder.toString());
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        while (result.hasNext()) {
+            Record record = result.next();
+            if (keys != null)
+                keys.forEach(s -> hashMap.put(s, record.get("n." + s).asString()));
+        }
+        neo4jUtil.close();
+        return hashMap;
+    }
 }

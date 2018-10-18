@@ -27,4 +27,13 @@ public class ServiceTest {
     public void TestRelations(){
         System.out.println(nodeService.getRelationsByName("group", 5));
     }
+
+    @Test
+    public void getNode(){
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("choFactor");
+        arrayList.add("comName");
+        arrayList.add("fatFactor");
+        System.out.println(nodeService.getNodeById("957562", null));
+    }
 }
