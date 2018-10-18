@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class NodeServiceImpl implements NodeService{
@@ -20,16 +21,17 @@ public class NodeServiceImpl implements NodeService{
     }
 
     @Override
-    public List<HashMap> getNodesByLabel(String label, Integer num, List<String> keys) {
-        if (num == null)
-            num = 25;
+    public List<HashMap> getNodesByLabels(String label, Integer num, List<String> keys) {
+
+        num = num ==  null ? 25 : num;
+
         StringBuilder stringBuilder = new StringBuilder("MATCH (n:" + label + ") RETURN ");
         if (keys != null)
             keys.forEach(s -> stringBuilder.append("n.").append(s).append(","));
         else
             stringBuilder.append("n,");
         stringBuilder.deleteCharAt(stringBuilder.length() - 1).append(" LIMIT ").append(num);
-        System.out.println(stringBuilder.toString());
+//        System.out.println(stringBuilder.toString());
         StatementResult result = neo4jUtil.myNeo4j(stringBuilder.toString());
         List<HashMap> hashMapList = new ArrayList<>();
         while (result.hasNext()){
@@ -42,5 +44,20 @@ public class NodeServiceImpl implements NodeService{
         }
         neo4jUtil.close();
         return hashMapList;
+    }
+
+    @Override
+    public List<Map> getRelationsByName(String relationName, Integer num) {
+
+        num = num ==  null ? 25 : num;
+
+        StatementResult result = neo4jUtil.myNeo4j("MATCH p=()-[r:" + relationName + "]->() RETURN p LIMIT " + num);
+        List<Map> mapList = new ArrayList<>();
+        while (result.hasNext()){
+            Record record = result.next();
+            mapList.add(record.asMap());
+        }
+        neo4jUtil.close();
+        return mapList;
     }
 }

@@ -16,10 +16,15 @@ public class ServiceTest {
     NodeService nodeService;
 
     @Test
-    public void Test() {
+    public void TestNodes() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("title");
         arrayList.add("authors");
-        System.out.println(nodeService.getNodesByLabel("DataSrc", 10, arrayList));
+        System.out.println(nodeService.getNodesByLabels("DataSrc", 10, arrayList));
+    }
+
+    @Test
+    public void TestRelations(){
+        System.out.println(nodeService.getRelationsByName("group", 5));
     }
 }
