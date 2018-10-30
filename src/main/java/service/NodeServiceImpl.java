@@ -49,7 +49,7 @@ public class NodeServiceImpl implements NodeService{
     @Override
     public List<Map> getRelationsByName(String relationName, Integer num) {
 
-        num = num ==  null ? 25 : num;
+        num = num == null ? 25 : num;
 
         StatementResult result = neo4jUtil.myNeo4j("MATCH p=()-[r:" + relationName + "]->() RETURN p LIMIT " + num);
         List<Map> mapList = new ArrayList<>();
