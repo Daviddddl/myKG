@@ -202,4 +202,16 @@ public class CreateNodes {
 
         neo4jUtil.close();
     }
+
+    public void createDisease() throws IOException {
+
+        DerivCd.getAllDerivCdList().forEach(derivCd -> {
+            neo4jUtil.myNeo4j(
+                    "CREATE (n:DerivCd { derivCd: \'" + derivCd.getDerivCd().trim() + "\', "
+                            + "derivDesc: \'" + derivCd.getDerivDesc().trim()+ "\' })");
+            System.out.println(derivCd);
+        });
+
+        neo4jUtil.close();
+    }
 }
