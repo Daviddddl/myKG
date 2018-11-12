@@ -25,6 +25,6 @@ public class DiseaseServiceImpl implements DiseaseService{
     }
 
     public static void main(String[] args) {
-        System.out.println(new DiseaseServiceImpl().getDiseaseByName("Cancers").getChildren());
+        System.out.println(Disease.getDiseaseNodes().size());
     }
 }
