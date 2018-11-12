@@ -30,6 +30,14 @@ public class Disease {
         this.children = children;
     }
 
+    @Override
+    public String toString() {
+        return "Disease{" +
+                "diseaseName='" + diseaseName + '\'' +
+                ", children=" + children +
+                '}';
+    }
+
     private static String readFile(){
         StringBuilder laststr= new StringBuilder();
         File file=new File("src/main/java/data/disease/HumanDisease.json");
@@ -45,7 +53,6 @@ public class Disease {
 
     public static List<Disease> getDiseaseNodes(){
         List<Disease> diseaseList = new ArrayList<>();
-        Disease disease = new Disease();
         JSONObject diseaseJson = JSONObject.parseObject(readFile());
         String firstParentName = diseaseJson.getString("name"); // br08402
         JSONArray firstChildrenArray = diseaseJson.getJSONArray("children");
@@ -67,24 +74,28 @@ public class Disease {
                     JSONObject diseaseJson4 = (JSONObject) thirdChildren;
                     String lastName = diseaseJson4.getString("name"); // H00016 Oral cancer
 
+                    Disease disease = new Disease();
                     disease.setDiseaseName(lastName);
                     disease.setChildren(null);
                     diseaseList.add(disease);
                     thirdChildList.add(disease);
                 }
 
+                Disease disease = new Disease();
                 disease.setDiseaseName(thirdParentName);
                 disease.setChildren(thirdChildList);
                 diseaseList.add(disease);
                 secondChildList.add(disease);
             }
 
+            Disease disease = new Disease();
             disease.setDiseaseName(secondParentName);
             disease.setChildren(secondChildList);
             diseaseList.add(disease);
             firstChildList.add(disease);
         }
 
+        Disease disease = new Disease();
         disease.setDiseaseName(firstParentName);
         disease.setChildren(firstChildList);
         diseaseList.add(disease);

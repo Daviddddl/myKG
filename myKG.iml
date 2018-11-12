@@ -24,5 +24,8 @@
         </fileset>
       </configuration>
     </facet>
+    <facet type="Python" name="Python">
+      <configuration sdkName="" />
+    </facet>
   </component>
 </module>
