@@ -2,7 +2,8 @@ import requests
 from lxml import etree
 
 base_link = 'https://www.kegg.jp/dbget-bin/www_bget?ds:H00'
-disease_id = 261
+disease_id = 200
+disease_num = 100
 
 
 def entry(each_tr):
@@ -45,7 +46,7 @@ def other_DBs(each_tr):
     return tables
 
 
-def linkDB():
+def linkDB(each_tr):
     return "https://www.genome.jp/dbget-bin/get_linkdb?disease+"
 
 
@@ -69,15 +70,16 @@ def get_each_tr(each_tr, key):
     else:
         return otherCondition(each_tr)
 
+for i in range(disease_id, disease_id + disease_num):
+    page = requests.get(base_link + str(i)).content.decode("utf-8")
+    tr_list = etree.HTML(page).xpath('//*[@name="form1"]/table/tr/td/table/tr')
+    res_f = open('disease_data/' + str(i) + '.txt', 'w+')
 
-page = requests.get(base_link + str(disease_id)).content.decode("utf-8")
-tr_list = etree.HTML(page).xpath('//*[@name="form1"]/table/tr/td/table/tr')
-res_f = open('disease_data/' + str(disease_id) + '.txt', 'w+')
+    for each_tr in tr_list:
+        key = each_tr.xpath('string(./th/nobr)')
+        value = get_each_tr(each_tr, key)
+        print(value)
+        res_f.write("\n--------\n" + key + ": " + str(value))
 
-for each_tr in tr_list:
-    key = each_tr.xpath('string(./th/nobr)')
-    value = get_each_tr(each_tr, key)
-    print(value)
-    res_f.write(key + ": " + str(value))
-
-res_f.close()
+    res_f.close()
+    print("Over: " + str(i))
