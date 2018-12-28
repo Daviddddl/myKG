@@ -5,14 +5,16 @@ import utils.Neo4jConfig;
 import utils.Neo4jUtil;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class CreateNodes {
 
-    private Neo4jUtil neo4jUtil = new Neo4jConfig().getNeo4j();
-
     public CreateNodes() throws IOException {}
 
-    public void creaateFoodDes() throws IOException {
+    public void createFoodDes() throws IOException {
+
+        Neo4jUtil neo4jUtil = new Neo4jConfig().getNeo4j();
 
         FoodDes.getAllFoodDesList().forEach(foodDes -> {
             neo4jUtil.myNeo4j(
@@ -38,6 +40,8 @@ public class CreateNodes {
 
     public void createDataSrc() throws IOException {
 
+        Neo4jUtil neo4jUtil = new Neo4jConfig().getNeo4j();
+
         DataSrc.getAllDataSrcList().forEach(dataSrc -> {
             neo4jUtil.myNeo4j(
                     "CREATE (n:DataSrc { dataSrcId: \'" + dataSrc.getDataSrcId().trim() + "\', "
@@ -57,6 +61,8 @@ public class CreateNodes {
 
     public void createDarsrcln() throws IOException {
 
+        Neo4jUtil neo4jUtil = new Neo4jConfig().getNeo4j();
+
         Datsrcln.getAllDatsrclnList().forEach(datsrcln -> {
             neo4jUtil.myNeo4j(
                     "CREATE (n:Datsrcln { dataSrcId: \'" + datsrcln.getDataSrcId().trim() + "\', "
@@ -70,6 +76,8 @@ public class CreateNodes {
 
     public void createDerivCd() throws IOException {
 
+        Neo4jUtil neo4jUtil = new Neo4jConfig().getNeo4j();
+
         DerivCd.getAllDerivCdList().forEach(derivCd -> {
             neo4jUtil.myNeo4j(
                     "CREATE (n:DerivCd { derivCd: \'" + derivCd.getDerivCd().trim() + "\', "
@@ -82,6 +90,8 @@ public class CreateNodes {
 
     public void createFdGroup() throws IOException {
 
+        Neo4jUtil neo4jUtil = new Neo4jConfig().getNeo4j();
+
         FdGroup.getAllFdGroupList().forEach(fdGroup -> {
             neo4jUtil.myNeo4j(
                     "CREATE (n:FdGroup { fdGrpCd: \'" + fdGroup.getFdGrpCd().trim() + "\', "
@@ -93,6 +103,8 @@ public class CreateNodes {
     }
 
     public void createFootnote() throws IOException {
+
+        Neo4jUtil neo4jUtil = new Neo4jConfig().getNeo4j();
 
         Footnote.getAllFootnoteList().forEach(footnote -> {
             neo4jUtil.myNeo4j(
@@ -109,6 +121,8 @@ public class CreateNodes {
 
     public void createLangdesc() throws IOException {
 
+        Neo4jUtil neo4jUtil = new Neo4jConfig().getNeo4j();
+
         Langdesc.getAllLangdescList().forEach(langdesc -> {
             neo4jUtil.myNeo4j(
                     "CREATE (n:Langdesc { description: \'" + langdesc.getDescription().trim() + "\', "
@@ -121,6 +135,8 @@ public class CreateNodes {
 
     public void createLangual() throws IOException {
 
+        Neo4jUtil neo4jUtil = new Neo4jConfig().getNeo4j();
+
         Langual.getAllLangualList().forEach(langual -> {
             neo4jUtil.myNeo4j(
                     "CREATE (n:Langual { factorCode: \'" + langual.getFactorCode().trim() + "\', "
@@ -132,6 +148,8 @@ public class CreateNodes {
     }
 
     public void createNutData() throws IOException {
+
+        Neo4jUtil neo4jUtil = new Neo4jConfig().getNeo4j();
 
         NutData.getAllNutDataList().forEach(nutData -> {
             neo4jUtil.myNeo4j(
@@ -160,6 +178,8 @@ public class CreateNodes {
 
     public void createNutrDef() throws IOException {
 
+        Neo4jUtil neo4jUtil = new Neo4jConfig().getNeo4j();
+
         NutrDef.getAllNutrDefList().forEach(nutrDef -> {
             neo4jUtil.myNeo4j(
                     "CREATE (n:NutrDef { numDec: \'" + nutrDef.getNumDec().trim() + "\', "
@@ -176,6 +196,8 @@ public class CreateNodes {
 
     public void createSrcCd() throws IOException {
 
+        Neo4jUtil neo4jUtil = new Neo4jConfig().getNeo4j();
+
         SrcCd.getAllSrcCdList().forEach(srcCd -> {
             neo4jUtil.myNeo4j(
                     "CREATE (n:SrcCd { srcCd: \'" + srcCd.getSrcCd().trim() + "\', "
@@ -187,6 +209,8 @@ public class CreateNodes {
     }
 
     public void createWeight() throws IOException {
+
+        Neo4jUtil neo4jUtil = new Neo4jConfig().getNeo4j();
 
         Weight.getAllWeightList().forEach(weight -> {
             neo4jUtil.myNeo4j(
@@ -203,15 +227,15 @@ public class CreateNodes {
         neo4jUtil.close();
     }
 
-    public void createDisease() throws IOException {
+    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, IOException {
+        /*for (Method method : CreateNodes.class.getMethods()) {
+            System.out.println(method.getName());
+            if (!method.getName().equals("main"))
+                method.invoke(null);
+        }*/
+        /*CreateNodes nodes = new CreateNodes();
+        nodes.createDarsrcln();*/
 
-        DerivCd.getAllDerivCdList().forEach(derivCd -> {
-            neo4jUtil.myNeo4j(
-                    "CREATE (n:DerivCd { derivCd: \'" + derivCd.getDerivCd().trim() + "\', "
-                            + "derivDesc: \'" + derivCd.getDerivDesc().trim()+ "\' })");
-            System.out.println(derivCd);
-        });
-
-        neo4jUtil.close();
+//        java.awt.Toolkit.getDefaultToolkit().beep();
     }
 }
