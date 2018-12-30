@@ -34,7 +34,6 @@ public class CreateRelations {
         neo4jUtil.close();
     }
 
-
     public void createFoodDes2Footnote() throws IOException {
         /*
          * FoodDes -> Footnote
@@ -123,7 +122,7 @@ public class CreateRelations {
         neo4jUtil.close();
     }
 
-    public void createFoodDes22Langual() throws IOException {
+    public void createFoodDes2Langual() throws IOException {
         /*
          * FoodDes -> Langual
          */
@@ -275,5 +274,21 @@ public class CreateRelations {
         });
 
         neo4jUtil.close();
+    }
+
+    public static void main(String[] args) throws IOException {
+        CreateRelations relations = new CreateRelations();
+        relations.createFoodDes2FoodGroupDescription();
+        relations.createFoodDes2Footnote();
+        relations.createFootnote2NutrientDateFile();
+        relations.createFoodDes2NutrientDateFile();
+        relations.createFoodDes2Weight();
+        relations.createFoodDes2Langual();
+        relations.createLangual2LangualFactorsDescriptionFile();
+        relations.createNutrientDataFile2NutrientDefinitionFile();
+        relations.createNutrientDataFile2SourceCodeFile();
+        relations.createNutrientDataFile2DataDerivationCode();
+        relations.createNutrientDataFile2SourcesofDataLinkFile();
+        relations.createSourcesofDataLinkFile2SourcesofDataFile();
     }
 }

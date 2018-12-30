@@ -233,8 +233,19 @@ public class CreateNodes {
             if (!method.getName().equals("main"))
                 method.invoke(null);
         }*/
-        /*CreateNodes nodes = new CreateNodes();
-        nodes.createDarsrcln();*/
+        CreateNodes nodes = new CreateNodes();
+//        nodes.createDarsrcln();
+        nodes.createFoodDes();
+        nodes.createDataSrc();
+        nodes.createDerivCd();
+        nodes.createFdGroup();
+        nodes.createFootnote();
+        nodes.createLangdesc();
+        nodes.createLangual();
+        nodes.createNutData();
+        nodes.createNutrDef();
+        nodes.createSrcCd();
+        nodes.createWeight();
 
 //        java.awt.Toolkit.getDefaultToolkit().beep();
     }
