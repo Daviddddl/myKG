@@ -13,8 +13,13 @@ import javax.annotation.Resource;
 public class FoodController {
 
     @Resource
-    @Autowired
+    final
     NodeService nodeService;
+
+    @Autowired
+    public FoodController(NodeService nodeService) {
+        this.nodeService = nodeService;
+    }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String getMainPage() {
