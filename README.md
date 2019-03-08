@@ -3,6 +3,11 @@
 ### How to access
 http://172.29.34.165:7474
 
+### update maven dependency versions
+```
+mvn versions:set -DnewVersion=1.0.1-SNAPSHOT
+```
+
 ### TODO
 1. Optimize the visualization.(Modify labels of Nodes, to make them easier to understand)
 2. Adjust the relationship of "Group" to contain more information between Food & Disease. 
